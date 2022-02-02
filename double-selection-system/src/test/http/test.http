@@ -1,0 +1,89 @@
+GET http://localhost:8080/student/checkApplication/8
+Accept: application/json
+authorization: {{token}}
+
+###
+GET http://localhost:8080/teacher/refuse/17
+Accept: application/json
+authorization: {{token}}
+
+###
+GET http://localhost:8080/teacher/agree/16
+Accept: application/json
+authorization: {{token}}
+
+###
+GET http://localhost:8080/teacher/index
+Accept: application/json
+authorization: {{token}}
+
+###
+
+POST http://localhost:8080/student/submitApplication
+Content-Type: application/json
+authorization: {{token}}
+
+{
+  "teacher": {
+    "id": "9"
+  },
+  "selfIntroduction": "hello"
+}
+
+###
+GET http://localhost:8080/student/index
+Accept: application/json
+authorization: {{token}}
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "number": "1001",
+  "password": "1001"
+}
+
+> {% client.global.set("token",response.headers.valueOf("authorization")); %}
+
+###
+POST http://localhost:8080/admin/addTeachers
+Content-Type: application/json
+Authorization:{{token}}
+
+[
+  {
+    "user": {
+      "name": "bobo",
+      "number": "1002"
+    }
+  },
+  {
+    "user": {
+      "name": "dandan",
+      "number": "1003"
+    }
+  }
+]
+
+###
+POST http://localhost:8080/admin/addStudents
+Content-Type: application/json
+Authorization: {{token}}
+
+[
+  {
+    "user": {
+      "name": "ddxfghhbba",
+      "number": "2111"
+    }
+  },
+  {
+    "user": {
+      "name": "yyyc",
+      "number": "2112"
+    }
+  }
+]
+
+
